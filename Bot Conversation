@@ -1,0 +1,10 @@
+name = input("Hello! What is your name? ")
+age_input = input("How old are you? ")
+age_recieved = int(age_input)
+bot_age = int(3)
+age_difference = age_recieved - bot_age
+color = "ciano"
+print(f"Nice to meet you {name}!")
+print(f"You are {age_difference} years old than me. I'm only {bot_age} year's old!")
+print("What's your favorite color ?")
+print(f"Oh, {color} is a beatifull color ")
