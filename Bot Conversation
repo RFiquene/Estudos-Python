@@ -6,7 +6,12 @@ def user_data_collection():
   age_difference = age_recieved - bot_age
   color = input("What's your favorite color? ")
   print(f"Nice to meet you {name}!")
-  print(f"You are {age_difference} years older than me. I'm only {bot_age} year's old!")
+  if age_difference > 0:
+    print(f"You are {age_difference} years older than me. I'm only {bot_age} year's old!")
+  elif age_difference < 0:
+    print(f"You are {abs(age_difference)} years younger than me. I'm only {bot_age} year's old!")
+  else :
+    print(f"You are the same age as me! I'm {bot_age} years old!")
   print(f"Oh, {color} it's a beatiful color ")
 
 user_data_collection()
