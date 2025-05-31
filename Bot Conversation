@@ -1,10 +1,48 @@
-name = input("Hello! What is your name? ")
-age_input = input("How old are you? ")
-age_recieved = int(age_input)
-bot_age = int(3)
-age_difference = age_recieved - bot_age
-color = "ciano"
-print(f"Nice to meet you {name}!")
-print(f"You are {age_difference} years old than me. I'm only {bot_age} year's old!")
-print("What's your favorite color ?")
-print(f"Oh, {color} is a beatifull color ")
+#Constante em maiúsclo e no topo do código
+IDADE_ROBO = 3
+
+#Funcao que vai estar coletando informações do usuário através de seus inputs
+def coletar_dados_usuario():
+    nome = input("Olá! Qual o seu nome? ").strip()
+    idade_input = input("Qual a sua idade? ").strip()
+    cor = input("Qual sua cor favorita? ").strip()
+    return nome, idade_input, cor
+
+def validar_dados(nome, idade_input, cor):
+    if not nome:
+        return False, "Nome não pode ser vazio."
+    if not cor:
+        return False, "Cor favorita não pode ser vazia."
+    if not idade_input.isdigit():
+        return False, "Idade deve ser um número inteiro positivo."
+    return True, ""
+
+#Funcao que vai estar processando os dados do usuário
+def processar_dados_usuario(nome, idade, cor):
+    diferenca_idade = idade - IDADE_ROBO
+
+    print(f"Muito prazer, {nome}!")
+
+    if diferenca_idade > 0:
+        print(f"Você é {diferenca_idade} anos mais velho que eu. Eu tenho apenas {IDADE_ROBO} anos!")
+    elif diferenca_idade < 0:
+        print(f"Você é {abs(diferenca_idade)} anos mais novo que eu. Eu tenho apenas {IDADE_ROBO} anos!")
+    else:
+        print(f"Temos a mesma idade! Eu também tenho {IDADE_ROBO} anos!")
+
+    print(f"Oh, {cor} é uma cor linda!")
+
+#Função de chamada
+def main():
+    nome, idade_input, cor = coletar_dados_usuario()
+    
+    valido, erro = validar_dados(nome, idade_input, cor)
+    if not valido:
+        print(f"Erro: {erro}")
+        return
+    
+    idade = int(idade_input)
+    processar_dados_usuario(nome, idade, cor)
+
+#Saida / Chamando as funções
+main()
